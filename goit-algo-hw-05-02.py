@@ -5,7 +5,8 @@ from typing import Callable
 
 def generator_numbers(text:str):
     words = text.split(' ')
-    numbers = map(float,filter(lambda x: re.match(r"\d+[\.,]{0,1}\d+.", x),words))
+    pattern = r"[\s\d+\.,{0,1}\d+\s]"
+    numbers = map(float,filter(lambda x: re.match(pattern, x),words))
     for number in numbers:
         yield number
 
